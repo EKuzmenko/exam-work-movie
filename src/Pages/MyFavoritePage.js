@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import MyFavoriteContent from '../Elements/MyFavoriteContent'
 import Menu from '../Elements/Menu'
 

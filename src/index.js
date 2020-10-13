@@ -6,6 +6,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+
 function MyFunc(state = [], action) {
   
   return state;

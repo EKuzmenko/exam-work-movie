@@ -1,25 +1,26 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import {
     BrowserRouter as Router,
     Switch,
     Route,
     Link
 } from "react-router-dom";
+import { DropdownButton } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
+import DeathStarImg from '../Img/DeathStarImg.png';
+
 
 function Menu() {
     return (
         <div className='menu'>
-            <Link to="/">Movie</Link>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    My Account
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="/">Main page</a>
-                    <a class="dropdown-item" href="/myFavorite">My favorite</a>
-                </div>
+            <div>
+                <img id="DeathStarImg" src={DeathStarImg} alt="DeathStarImg" />
+                <Link to="/">Movies</Link>
             </div>
+            <DropdownButton id="dropdown-basic-button" title="My Account">
+                <Dropdown.Item href="/">Home</Dropdown.Item>
+                <Dropdown.Item href="/MyFavoritePage">My Favorite</Dropdown.Item>
+            </DropdownButton>
         </div>
     )
 }

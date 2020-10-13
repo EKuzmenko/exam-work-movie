@@ -1,7 +1,5 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,6 +9,7 @@ import {
 import MainPage from './Pages/MainPage'
 import MyFavoritePage from './Pages/MyFavoritePage'
 import SelectedMoviePage from './Pages/SelectedMoviePage'
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 function App () {
     return (
@@ -22,24 +21,19 @@ function App () {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
+              <Link to="/MyFavoritePage">My Favotite</Link>
             </li>
           </ul>
         </nav>
  */}
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
           <Route exact path="/">
             <MainPage />
           </Route>
-          <Route path="/myFavorite">
+          <Route path="/MyFavoritePage">
             <MyFavoritePage/>
           </Route>
-          <Route path="/selectedMoviePage">
+          <Route path="/SelectedMoviePage">
             <SelectedMoviePage />
           </Route>
           <Route path="*">
