@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import MyFavoriteContent from '../Elements/MyFavoriteContent'
 import Menu from '../Elements/Menu'
 
 function MyFavoritePage () {
+  const [movie, setMovie] = useState([])
+
     return (
         <>
         <Menu />
-        <MyFavoriteContent />
+        <MyFavoriteContent 
+        movie={movie}
+        setMovie={setMovie}
+        />
         </>
     )
   }

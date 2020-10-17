@@ -2,11 +2,16 @@ import React from 'react';
 import SelectedMovieContent from '../Elements/SelectedMovieContent'
 import Menu from '../Elements/Menu'
 
-function SelectedMoviePage () {
-    return (
+function SelectedMoviePage (props) {
+  let {movieId, setMovieId} = props
+    
+  return (
         <>
         <Menu />
-        <SelectedMovieContent />
+        <SelectedMovieContent 
+        movieId={movieId}
+        setMovieId={setMovieId}
+        />
         </>
     )
   }

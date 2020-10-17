@@ -22,16 +22,20 @@
  .btn-primary {
    background-color: rgb(88, 88, 88)!important;
    border-color: rgba(251, 251, 252, 0.596)!important;
+   margin-right: 15px!important;
  }
 
  .dropdown-menu.show {
    width: 12.4px!important;
    background-color: rgb(88, 88, 88)!important;
-   
  }
- 
- .btn-primary:focus{
-  box-shadow: 0 0 0 0.1rem rgba(251, 252, 253, 0.5)!important;
+
+ .dropdown-item:hover {
+   color: rgb(88, 88, 88)!important;
+ }
+
+ .btn-primary:focus {
+   box-shadow: 0 0 0 0.1rem rgba(251, 252, 253, 0.5)!important;
  }
 
  #DeathStarImg {
@@ -39,24 +43,22 @@
    color: white;
    background-color: transparent;
  }
-.container{
-  padding: 5px!important;
-  margin-top: 10px;
-}
- .card {
-   margin-left: 3px!important;
-   margin-right: 3px!important;
- }
- .img_div{
+.content{
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
- }
- .mainContent p{
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: center;
+}
+ .mainContent p {
    font-weight: 400;
    margin-left: 15px;
    margin-top: 15px;
    margin-bottom: 15px;
    text-shadow: 1px 1px 1px gray;
+ }
+
+ .poster {
+   width: 180px;
+   margin: 5px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
  }
