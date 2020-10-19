@@ -11,7 +11,7 @@ const api = 'https://api.themoviedb.org/3/movie/now_playing?api_key=ebea8cfca72f
 function MainContent(props) {
   const [list, setList] = useState([])
   let { page, setPage } = props
-  const [movieId, setMovieId] = useState("fjjjjj")
+  let {movieId, setMovieId} = props
 
   useEffect(() => {
     fetch(`${api}${page}`)

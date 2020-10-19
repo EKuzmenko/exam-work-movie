@@ -5,6 +5,7 @@ import Menu from '../Elements/Menu'
 function MainPage (props) {
     const [page, setPage] = useState(1)
     let {movieId, setMovieId} = props
+    let {movieIdGet, setMovieIdGet} = props
 
     return (
         <>
@@ -14,6 +15,8 @@ function MainPage (props) {
             setPage={setPage}
             movieId={movieId}
             setMovieId={setMovieId}
+            movieIdGet={movieIdGet}
+            setMovieIdGet={setMovieIdGet}
             />
         </>
     )

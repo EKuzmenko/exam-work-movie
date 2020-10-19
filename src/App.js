@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -9,11 +9,14 @@ import {
 import MainPage from './Pages/MainPage'
 import MyFavoritePage from './Pages/MyFavoritePage'
 import SelectedMoviePage from './Pages/SelectedMoviePage'
-import 'bootstrap/dist/css/bootstrap.min.css'; 
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App () {
-    return (
-      <Router>
+function App() {
+  const [movieId, setMovieId] = useState(0)
+  const [movieIdGet, setMovieIdGet] = useState({})
+
+  return (
+    <Router>
       <div>
         {/* <nav>
           <ul>
@@ -28,13 +31,19 @@ function App () {
  */}
         <Switch>
           <Route exact path="/">
-            <MainPage />
+            <MainPage
+              movieId={movieId}
+              setMovieId={setMovieId} />
           </Route>
           <Route path="/MyFavoritePage">
-            <MyFavoritePage/>
+            <MyFavoritePage />
           </Route>
           <Route path="/SelectedMoviePage">
-            <SelectedMoviePage />
+            <SelectedMoviePage
+              movieId={movieId}
+              setMovieId={setMovieId}
+              movieIdGet={movieIdGet}
+              setMovieIdGet={setMovieIdGet} />
           </Route>
           <Route path="*">
             <div>Path error: 404</div>
@@ -42,7 +51,7 @@ function App () {
         </Switch>
       </div>
     </Router>
-    );
-  }
+  );
+}
 
 export default App;
