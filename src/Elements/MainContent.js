@@ -10,8 +10,16 @@ const api = 'https://api.themoviedb.org/3/movie/now_playing?api_key=ebea8cfca72f
 
 function MainContent(props) {
   const [list, setList] = useState([])
+  let { totPages, setTotPages } = props
   let { page, setPage } = props
-  let {movieId, setMovieId} = props
+  let { setMovieId } = props
+
+  useEffect(() => {
+    fetch(`${api}${page}`)
+      .then(res => res.json())
+      .then(res => setTotPages(res.total_pages))
+      .catch(error => console.error(error))
+  }, [page])
 
   useEffect(() => {
     fetch(`${api}${page}`)
@@ -28,7 +36,7 @@ function MainContent(props) {
           <div className="row">
             {list?.map(el =>
               <div className="img_div col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                <Link to="/SelectedMoviePage" onClick={()=> setMovieId(el.id)}>
+                <Link to="/SelectedMoviePage" onClick={() => setMovieId(el.id)}>
                   <img className="poster" src={`http://image.tmdb.org/t/p/w200/${el.poster_path}` || DeathStarImg} key={el.id} />
                 </Link>
               </div>
@@ -37,8 +45,9 @@ function MainContent(props) {
         </div>
         <div className="div_pagin">
           <Pagination
+            firstPage={1}
             currentPage={page}
-            totalPages={60}
+            totalPages={totPages}
             changeCurrentPage={setPage}
             theme="border-bottom"
           />

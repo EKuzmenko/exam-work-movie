@@ -8,7 +8,7 @@ import * as serviceWorker from './serviceWorker';
 
 
 function MyFunc(state = [], action) {
-  
+
   return state;
 }
 

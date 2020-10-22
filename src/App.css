@@ -56,9 +56,54 @@
    margin-bottom: 15px;
    text-shadow: 1px 1px 1px gray;
  }
-
+.img_div {
+  width: 200px!important;
+  height: 280px!important;
+}
  .poster {
    width: 180px;
    margin: 5px;
    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+ }
+ 
+ #modal_container{
+  background-color: rgba(1, 1, 29, 0.568);
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+ }
+ 
+ .top_buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  }
+  .top_buttons button{
+    background-color: transparent;
+    border: none;
+    color: rgb(177, 177, 177);
+  }
+ .icon_arow_left {
+  width: 30px;
+  padding-right: 10px;
+  padding-bottom: 4px;
+  color:rgb(177, 177, 177);
+ }
+ .icon_arow_right {
+  width: 30px;
+  padding-left: 10px;
+  padding-bottom: 4px;
+  color: rgb(177, 177, 177);
+ }
+ .backgroung_poster{
+  position: absolute;
+  filter: blur(7px);
+  z-index:-1;
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-attachment: fixed;
+  width: 100%;
+  height: auto;
  }

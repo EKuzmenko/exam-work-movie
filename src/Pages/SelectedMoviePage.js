@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import SelectedMovieContent from '../Elements/SelectedMovieContent'
 import Menu from '../Elements/Menu'
 
@@ -13,7 +13,7 @@ function SelectedMoviePage (props) {
         movieId={movieId}
         setMovieId={setMovieId}
         movieIdGet={movieIdGet}
-        setMovieIdGet={setMovieIdGet}
+        setMovieIdGet={setMovieIdGet} 
         />
         </>
     )
