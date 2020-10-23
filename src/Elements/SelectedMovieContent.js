@@ -20,12 +20,15 @@ function SelectedMovieContent(props) {
 
    if (movieIdGet?.original_title) {
     return (
-        <div className="modalWindow"  id="modal_container" style={{backgroundImage: `http://image.tmdb.org/t/p/w200/${movieIdGet?.poster_path}`}}>
-          <div className="top_buttons">
+        <div className="modalWindow container"  id="modal_container" style={{backgroundImage: `url(http://image.tmdb.org/t/p/w200/${movieIdGet?.poster_path})`}}>
+          <div className="blur">
+          <div className="top_buttons col">
               <button><img className="icon_arow_left" src={icon_arow_left} />Back to list</button>
               <button>Next Movie<img className="icon_arow_right" src={icon_arow_right} /></button>
             </div>
-            <button>Add to favorite</button>
+            <div className="add_to_fav_botton">
+            <button className="add_to_fav">Add to favorite</button>
+            </div>
             <div className="title_year">
               {movieIdGet?.original_title} ({movieIdGet?.release_date.substr(0, 4)})
             </div>
@@ -43,6 +46,7 @@ function SelectedMovieContent(props) {
             </div>
             <div className="discription">
                 <p>{movieIdGet?.overview}</p>
+            </div>
             </div>
           </div>
     )
