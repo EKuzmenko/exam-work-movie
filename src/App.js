@@ -13,6 +13,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   const [movieId, setMovieId] = useState(0)
   const [movieIdGet, setMovieIdGet] = useState({})
+  const [movieEl, setMovieEl] = useState(0)
+  const [list, setList] = useState([])
 
   return (
     <Router>
@@ -34,7 +36,12 @@ function App() {
               movieId={movieId}
               setMovieId={setMovieId} 
               movieIdGet={movieIdGet}
-              setMovieIdGet={setMovieIdGet}/>
+              setMovieIdGet={setMovieIdGet}
+              movieEl={movieEl}
+              setMovieEl={setMovieEl}
+              list={list}
+              setList={setList}
+              />
           </Route>
           <Route path="/MyFavoritePage">
             <MyFavoritePage />
@@ -44,7 +51,11 @@ function App() {
               movieId={movieId}
               setMovieId={setMovieId}
               movieIdGet={movieIdGet}
-              setMovieIdGet={setMovieIdGet} />
+              setMovieIdGet={setMovieIdGet} 
+              movieEl={movieEl}
+              setMovieEl={setMovieEl}
+              list={list}
+              setList={setList}/>
           </Route>
           <Route path="*">
             <div>Path error: 404</div>

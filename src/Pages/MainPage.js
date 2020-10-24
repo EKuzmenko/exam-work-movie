@@ -7,6 +7,8 @@ function MainPage (props) {
     const [totPages, setTotPages] = useState(0)
     let {movieId, setMovieId} = props
     let {movieIdGet, setMovieIdGet} = props
+    let {movieEl, setMovieEl} = props
+    let {list, setList} = props
 
     return (
         <>
@@ -20,6 +22,10 @@ function MainPage (props) {
             setMovieIdGet={setMovieIdGet}
             totPages={totPages}
             setTotPages={setTotPages}
+            movieEl={movieEl}
+            setMovieEl={setMovieEl}
+            list={list}
+            setList={setList}
             />
         </>
     )

@@ -9,22 +9,18 @@ import {
 const api = 'https://api.themoviedb.org/3/movie/now_playing?api_key=ebea8cfca72fdff8d2624ad7bbf78e4c&language=en-US&page='
 
 function MainContent(props) {
-  const [list, setList] = useState([])
+  let {list, setList} = props
   let { totPages, setTotPages } = props
   let { page, setPage } = props
   let { setMovieId } = props
-
+  let {movieEl, setMovieEl} = props
+  
   useEffect(() => {
     fetch(`${api}${page}`)
       .then(res => res.json())
-      .then(res => setTotPages(res.total_pages))
-      .catch(error => console.error(error))
-  }, [page])
-
-  useEffect(() => {
-    fetch(`${api}${page}`)
-      .then(res => res.json())
-      .then(res => setList(res.results))
+      .then(res => {setList(res.results);
+                    setTotPages(res.total_pages);
+                  console.log(res)})
       .catch(error => console.error(error))
   }, [page])
 
@@ -34,9 +30,9 @@ function MainContent(props) {
       <div className="content">
         <div className="container">
           <div className="row">
-            {list?.map(el =>
+            {list?.map((el, index) =>
               <div className="img_div col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                <Link to="/SelectedMoviePage" onClick={() => setMovieId(el.id)}>
+                <Link to="/SelectedMoviePage" onClick={() => {setMovieId(el.id); setMovieEl(index)}}>
                   <img className="poster" src={`http://image.tmdb.org/t/p/w200/${el.poster_path}` || DeathStarImg} key={el.id} />
                 </Link>
               </div>
