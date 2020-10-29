@@ -15,6 +15,9 @@ function App() {
   const [movieIdGet, setMovieIdGet] = useState({})
   const [movieEl, setMovieEl] = useState(0)
   const [list, setList] = useState([])
+  const [page, setPage] = useState(1)
+  const [movArr, setMovArr] = useState({})
+  const [favArr, setFavArr] = useState([])
 
   return (
     <Router>
@@ -25,7 +28,7 @@ function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/MyFavoritePage">My Favotite</Link>
+              <Link to="/MyFavoritePage">My Favorite</Link>
             </li>
           </ul>
         </nav>
@@ -34,28 +37,46 @@ function App() {
           <Route exact path="/">
             <MainPage
               movieId={movieId}
-              setMovieId={setMovieId} 
+              setMovieId={setMovieId}
               movieIdGet={movieIdGet}
               setMovieIdGet={setMovieIdGet}
               movieEl={movieEl}
               setMovieEl={setMovieEl}
               list={list}
               setList={setList}
-              />
+              page={page}
+              setPage={setPage}
+              movArr={movArr}
+              setMovArr={setMovArr}
+              favArr={favArr}
+              setFavArr={setFavArr}
+            />
           </Route>
           <Route path="/MyFavoritePage">
-            <MyFavoritePage />
+            <MyFavoritePage
+              favArr={favArr}
+              setFavArr={setFavArr}
+              movieIdGet={movieIdGet}
+              setMovieIdGet={setMovieIdGet}
+            />
           </Route>
           <Route path="/SelectedMoviePage">
             <SelectedMoviePage
               movieId={movieId}
               setMovieId={setMovieId}
               movieIdGet={movieIdGet}
-              setMovieIdGet={setMovieIdGet} 
+              setMovieIdGet={setMovieIdGet}
               movieEl={movieEl}
               setMovieEl={setMovieEl}
               list={list}
-              setList={setList}/>
+              setList={setList}
+              page={page}
+              setPage={setPage}
+              movArr={movArr}
+              setMovArr={setMovArr}
+              favArr={favArr}
+              setFavArr={setFavArr}
+            />
           </Route>
           <Route path="*">
             <div>Path error: 404</div>

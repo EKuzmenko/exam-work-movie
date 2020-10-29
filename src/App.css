@@ -120,6 +120,9 @@
   padding-bottom: 4px;
   color: rgb(177, 177, 177);
  }
+ .icon_arow_right:disabled{
+  color: rgb(63, 62, 62);
+ }
  .selected_poster{
    width: 180px;
  }
@@ -128,7 +131,6 @@
   flex-direction: row;
   justify-content: flex-end ;
   align-items: flex-start;
-  padding-right: 40px;
  }
  .add_to_fav{
   background-color: transparent;
@@ -186,6 +188,16 @@
 }
 #disc_hr{
   border-bottom: 1px solid rgba(109, 109, 109, 0.856);
+}
+#next_movie_btn:disabled{
+  color: rgb(63, 62, 62);
+}
+.myFavoriteContent p {
+  font-weight: 400;
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 1px gray;
 }
 
 
