@@ -20,6 +20,9 @@ function App() {
   const [favArr, setFavArr] = useState([])
   //const [favArrStor, setFavArrStor] = useState([])
   const [btnAddFilm, setBtnAddFilm] = useState(false)
+  const [btnDelFilm, setBtnDelFilm]=useState(false)
+  const[btnBack, setBtnBack]=useState(false)
+  const [countModal, setCountModal] = useState(0)
 
   return (
     <Router>
@@ -52,6 +55,11 @@ function App() {
               //setMovArr={setMovArr}
               favArr={favArr}
               setFavArr={setFavArr}
+              countModal={countModal}
+              setCountModal={setCountModal}
+              btnDelFilm={btnDelFilm}
+              setBtnDelFilm={setBtnDelFilm}
+
             />
           </Route>
           <Route path="/MyFavoritePage">
@@ -68,6 +76,10 @@ function App() {
               setMovieEl={setMovieEl}
               list={list}
               setList={setList}
+              btnBack={btnBack}
+              setBtnBack={setBtnBack}
+              btnDelFilm={btnDelFilm}
+              setBtnDelFilm={setBtnDelFilm}
             />
           </Route>
           <Route path="/SelectedMoviePage">
@@ -90,6 +102,12 @@ function App() {
               //setFavArrStor={setFavArrStor}
               btnAddFilm={btnAddFilm}
               setBtnAddFilm={setBtnAddFilm}
+              btnBack={btnBack}
+              setBtnBack={setBtnBack}
+              countModal={countModal}
+              setCountModal={setCountModal}
+              btnDelFilm={btnDelFilm}
+              setBtnDelFilm={setBtnDelFilm}
             />
           </Route>
           <Route path="*">

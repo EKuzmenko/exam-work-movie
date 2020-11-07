@@ -12,7 +12,10 @@ function SelectedMoviePage(props) {
         favArr, setFavArr,
         //favArrStor, setFavArrStor,
         btnAddFilm, setBtnAddFilm,
-        btnBack, setBtnBack} = props
+        btnBack, setBtnBack,
+        countModal, setCountModal,
+        btnDelFilm, setBtnDelFilm
+      } = props
 
   return (
     <>
@@ -38,6 +41,10 @@ function SelectedMoviePage(props) {
         setBtnAddFilm={setBtnAddFilm}
         btnBack={btnBack}
         setBtnBack={setBtnBack}
+        countModal={countModal}
+        setCountModal={setCountModal}
+        btnDelFilm={btnDelFilm}
+        setBtnDelFilm={setBtnDelFilm}
       />
     </>
   )

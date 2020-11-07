@@ -15,9 +15,11 @@ function MainContent(props) {
         setMovieId,
         movieEl, setMovieEl,
         //movArr, setMovArr,
-        favArr, setFavArr } = props
-
-  useEffect(() => {
+        favArr, setFavArr,
+        countModal, setCountModal,
+        btnDelFilm, setBtnDelFilm } = props
+        
+   useEffect(() => {
     fetch(`${api}${page}`)
       .then(res => res.json())
       .then(res => {
@@ -36,7 +38,7 @@ function MainContent(props) {
           <div className="row">
             {list?.map((el, index) =>
               <div className="img_list col-xl-2 col-lg-3 col-md-4 col-sm-6" id="img_list">
-                <Link to="/SelectedMoviePage" onClick={() => { setMovieId(el.id); setMovieEl(index) }}>
+                <Link to="/SelectedMoviePage" onClick={() => { setMovieId(el.id); setMovieEl(index)}}>
                   <img className="poster" alt="poster" src={`http://image.tmdb.org/t/p/w200/${el.poster_path}` || DeathStarImg} key={el.id} />
                 </Link>
               </div>

@@ -137,17 +137,38 @@
   flex-direction: row;
   justify-content: flex-end ;
   align-items: flex-start;
+  position: relative;
  }
  .add_to_fav{
+  position: relative;
   background-color: transparent;
   border: 1px solid silver;
   color: rgb(177, 177, 177);
   border-radius: 5px;
+  z-index: 200;
  }
  .add_to_fav:disabled{
-  color: rgb(63, 62, 62);
-  border: 1px solid rgb(63, 62, 62);
+  position: relative;
+  color: rgba(63, 62, 62, 0);
+  border: 1px solid rgba(63, 62, 62, 0);
+  z-index: -200;
  }
+
+ .del_from_fav{
+  position: relative;
+  background-color: transparent;
+  border: 1px solid silver;
+  color: rgb(177, 177, 177);
+  border-radius: 5px;
+  z-index: 200;
+ }
+ .del_from_fav:disabled{
+  position: relative;
+  color: rgba(63, 62, 62, 0);
+  border: 1px solid rgba(63, 62, 62, 0);
+  z-index: -200;
+ }
+
  .center_content{
    width: 80%;
    display: flex;

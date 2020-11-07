@@ -9,7 +9,9 @@ function MyFavoritePage (props) {
         //favArrStor, setFavArrStor,
         movieEl, setMovieEl,
         list, setList,
-        btnBack, setBtnBack } = props
+        btnBack, setBtnBack,
+        countModal, setCountModal,
+        btnDelFilm, setBtnDelFilm } = props
   
     return (
         <>
@@ -29,6 +31,10 @@ function MyFavoritePage (props) {
         setList={setList}
         btnBack={btnBack}
         setBtnBack={setBtnBack}
+        countModal={countModal}
+        setCountModal={setCountModal}
+        btnDelFilm={btnDelFilm}
+        setBtnDelFilm={setBtnDelFilm}
         />
         </>
     )

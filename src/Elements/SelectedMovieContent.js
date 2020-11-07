@@ -13,7 +13,6 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"];
 
 function SelectedMovieContent(props) {
-  const [countModal, setCountModal] = useState(0)
 
   let { movieId, setMovieId,
     movieIdGet, setMovieIdGet,
@@ -23,23 +22,52 @@ function SelectedMovieContent(props) {
     favArr, setFavArr,
     //favArrStor, setFavArrStor,
     btnAddFilm, setBtnAddFilm,
-    btnBack, setBtnBack } = props
+    btnBack, setBtnBack,
+    countModal, setCountModal,
+    btnDelFilm, setBtnDelFilm
+  } = props
 
   function Next_movie_btn_func(number) {
     setMovieEl(number);
     setMovieId(list[number].id);
   }
+  
+  /* useEffect(() => {
+    if (favArr.map(el => el.id != movieIdGet.id)) {
+
+      setCountModal(0)
+    }
+    else {
+      btnAddFilm = false
+      setCountModal(1)
+    }
+  }, [favArr]) */
 
   useEffect(() => {
-    if (btnAddFilm === true) {
-      favArr.push(movieIdGet);
-      setFavArr(favArr);
-      localStorage.setItem("favArray", JSON.stringify(favArr));
-      setBtnAddFilm(false)
-    }
+      if (btnAddFilm === true) {
+        favArr.push(movieIdGet);
+        setFavArr(favArr);
+        localStorage.setItem("favArray", JSON.stringify(favArr));
+        setBtnAddFilm(false)
+        }
   }, [favArr, btnAddFilm])
 
   useEffect(() => {
+    if (btnDelFilm === true) {
+      favArr.pop(movieIdGet);
+      setFavArr(favArr);
+      localStorage.setItem("favArray", JSON.stringify(favArr));
+      setBtnDelFilm(false)
+      }
+}, [favArr, btnDelFilm])
+
+
+useEffect(()=>{
+  favArr.map(el=>(el.id==movieId)?setCountModal(countModal + 1):"")
+    },[movieId]
+)
+
+useEffect(() => {
     if (JSON.parse(localStorage.getItem("favArray")) === null) {
       localStorage.setItem("favArray", JSON.stringify([]));
     }
@@ -66,13 +94,13 @@ function SelectedMovieContent(props) {
         <div className="blur">
           <div className="top_buttons col">
             {/* {if (btnBack=false){} :to="/MyFavoritePage"} */}
-            <Link to="/"
+            <Link to={(btnBack == true) ? "/MyFavoritePage" : "/"}
               onClick={() => `https://api.themoviedb.org/3/movie/${movieIdGet?.id}?api_key=ebea8cfca72fdff8d2624ad7bbf78e4c&language=en-US`}>
               <button><img className="icon_arow_left" src={icon_arow_left} alt="icon_arow_left" />
                   Back to list
                 </button>
             </Link>
-            <button id="next_movie_btn" disabled={movieEl === (list.length - 1)} onClick={() => { Next_movie_btn_func(movieEl + 1); setCountModal(0) }
+            <button id="next_movie_btn" disabled={movieEl === (list.length - 1)} onClick={() => { Next_movie_btn_func(movieEl + 1); setCountModal(0)}
             }
             >Next Movie
               <img disabled={movieEl > (list.length - 2)} alt="icon_arow_right" className="icon_arow_right"
@@ -92,9 +120,12 @@ function SelectedMovieContent(props) {
                 <button disabled={countModal > 0} className="add_to_fav" onClick={() => { setBtnAddFilm(true); setCountModal(countModal + 1) }} >
                   Add to favorite
                 </button>
+                <button disabled={countModal < 1} className="del_from_fav" onClick={() => { setBtnDelFilm(true); setCountModal(0) }} >
+                  Unfavorite
+                </button>
               </div>
               <div className="title_year">
-                {movieIdGet?.original_title} ({movieIdGet?.release_date.substr(0, 4)})
+                {movieIdGet?.title} ({movieIdGet?.release_date.substr(0, 4)})
               </div>
               <div className="center_right_center">
                 <div className="score">

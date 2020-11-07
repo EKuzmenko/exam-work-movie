@@ -10,7 +10,10 @@ function MainPage (props) {
           movieEl, setMovieEl,
           list, setList,
           //movArr, setMovArr,
-          favArr, setFavArr } = props
+          favArr, setFavArr,
+          countModal, setCountModal,
+          btnDelFilm, setBtnDelFilm
+         } = props
 
     return (
         <>
@@ -32,6 +35,10 @@ function MainPage (props) {
             //setMovArr={setMovArr}
             favArr={favArr}
             setFavArr={setFavArr}
+            countModal={countModal}
+            setCountModal={setCountModal}
+            btnDelFilm={btnDelFilm}
+            setBtnDelFilm={setBtnDelFilm}
             />
         </>
     )
