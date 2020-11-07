@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DeathStarImg from '../Img/DeathStarImg.png';
 import Pagination from "react-pagination-library";
-import "react-pagination-library/build/css/index.css"; //for css
+import "react-pagination-library/build/css/index.css";
 import {
   Link
 } from "react-router-dom";
@@ -9,22 +9,22 @@ import {
 const api = 'https://api.themoviedb.org/3/movie/now_playing?api_key=ebea8cfca72fdff8d2624ad7bbf78e4c&language=en-US&page='
 
 function MainContent(props) {
-  let {list, setList} = props
-  let { totPages, setTotPages } = props
-  let { page, setPage } = props
-  let { setMovieId } = props
-  let {movieEl, setMovieEl} = props
-  let {movArr, setMovArr}= props
-  let {favArr, setFavArr}=props
-  
+  let { list, setList,
+        totPages, setTotPages,
+        page, setPage,
+        setMovieId,
+        movieEl, setMovieEl,
+        //movArr, setMovArr,
+        favArr, setFavArr } = props
+
   useEffect(() => {
     fetch(`${api}${page}`)
       .then(res => res.json())
-      .then(res => {setList(res.results);
-                    setTotPages(res.total_pages);
-                    setMovArr(res);
-                  console.log(res)
-                })
+      .then(res => {
+        setList(res.results);
+        setTotPages(res.total_pages);
+        //setMovArr(res)
+      })
       .catch(error => console.error(error))
   }, [page])
 
@@ -35,9 +35,9 @@ function MainContent(props) {
         <div className="container">
           <div className="row">
             {list?.map((el, index) =>
-              <div className="img_div col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                <Link to="/SelectedMoviePage" onClick={() => {setMovieId(el.id); setMovieEl(index)}}>
-                  <img className="poster" src={`http://image.tmdb.org/t/p/w200/${el.poster_path}` || DeathStarImg} key={el.id} />
+              <div className="img_list col-xl-2 col-lg-3 col-md-4 col-sm-6" id="img_list">
+                <Link to="/SelectedMoviePage" onClick={() => { setMovieId(el.id); setMovieEl(index) }}>
+                  <img className="poster" alt="poster" src={`http://image.tmdb.org/t/p/w200/${el.poster_path}` || DeathStarImg} key={el.id} />
                 </Link>
               </div>
             )}

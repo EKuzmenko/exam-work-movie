@@ -3,9 +3,14 @@ import MyFavoriteContent from '../Elements/MyFavoriteContent'
 import Menu from '../Elements/Menu'
 
 function MyFavoritePage (props) {
-  let {favArr, setFavArr}=props
-  let {movieIdGet, setMovieIdGet} = props
-
+  let { favArr, setFavArr,
+        movieIdGet, setMovieIdGet,
+        movieId, setMovieId,
+        //favArrStor, setFavArrStor,
+        movieEl, setMovieEl,
+        list, setList,
+        btnBack, setBtnBack } = props
+  
     return (
         <>
         <Menu />
@@ -14,6 +19,16 @@ function MyFavoritePage (props) {
         setFavArr={setFavArr}
         movieIdGet={movieIdGet}
         setMovieIdGet={setMovieIdGet}
+        movieId={movieId}
+        setMovieId={setMovieId}
+        //favArrStor={favArrStor}
+        //setFavArrStor={setFavArrStor}
+        movieEl={movieEl}
+        setMovieEl={setMovieEl}
+        list={list}
+        setList={setList}
+        btnBack={btnBack}
+        setBtnBack={setBtnBack}
         />
         </>
     )

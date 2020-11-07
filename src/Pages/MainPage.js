@@ -4,13 +4,13 @@ import Menu from '../Elements/Menu'
 
 function MainPage (props) {
     const [totPages, setTotPages] = useState(0)
-    let { page, setPage } = props
-    let {movieId, setMovieId} = props
-    let {movieIdGet, setMovieIdGet} = props
-    let {movieEl, setMovieEl} = props
-    let {list, setList} = props
-    let {movArr, setMovArr}= props
-    let {favArr, setFavArr}=props
+    let { page, setPage,
+          movieId, setMovieId,
+          movieIdGet, setMovieIdGet,
+          movieEl, setMovieEl,
+          list, setList,
+          //movArr, setMovArr,
+          favArr, setFavArr } = props
 
     return (
         <>
@@ -28,8 +28,8 @@ function MainPage (props) {
             setMovieEl={setMovieEl}
             list={list}
             setList={setList}
-            movArr={movArr}
-            setMovArr={setMovArr}
+            //movArr={movArr}
+            //setMovArr={setMovArr}
             favArr={favArr}
             setFavArr={setFavArr}
             />

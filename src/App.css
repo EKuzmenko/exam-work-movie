@@ -8,7 +8,9 @@
    align-items: center;
    background-color: rgb(88, 88, 88);
  }
-
+#DeathStarImg{
+  padding-right:5px;
+}
  .menu div {
    padding-left: 5px;
    padding-right: 5px;
@@ -23,7 +25,7 @@
  .btn-primary {
    background-color: rgb(88, 88, 88)!important;
    border-color: rgba(251, 251, 252, 0.596)!important;
-   margin-right: 15px!important;
+   margin-right: 25px!important;
  }
 
  .dropdown-menu.show {
@@ -57,7 +59,7 @@
    margin-bottom: 15px;
    text-shadow: 1px 1px 1px gray;
  }
-.img_div {
+#img_list {
   width: 200px!important;
   height: 280px!important;
 }
@@ -65,6 +67,9 @@
    width: 180px;
    margin: 5px;
    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+ }
+ .poster:hover{
+   width:185px;
  }
  
  #modal_container{
@@ -125,6 +130,7 @@
  }
  .selected_poster{
    width: 180px;
+   box-shadow: 0 0 50px rgba(7, 7, 7, 0.5);
  }
  .add_to_fav_botton{
   display: flex;
@@ -134,9 +140,13 @@
  }
  .add_to_fav{
   background-color: transparent;
-  border: 1px solid silver;;
+  border: 1px solid silver;
   color: rgb(177, 177, 177);
   border-radius: 5px;
+ }
+ .add_to_fav:disabled{
+  color: rgb(63, 62, 62);
+  border: 1px solid rgb(63, 62, 62);
  }
  .center_content{
    width: 80%;
@@ -198,6 +208,9 @@
   margin-top: 15px;
   margin-bottom: 15px;
   text-shadow: 1px 1px 1px gray;
+}
+.fav_poster{
+  width: 150px;
 }
 
 

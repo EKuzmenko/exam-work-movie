@@ -16,8 +16,10 @@ function App() {
   const [movieEl, setMovieEl] = useState(0)
   const [list, setList] = useState([])
   const [page, setPage] = useState(1)
-  const [movArr, setMovArr] = useState({})
+  //const [movArr, setMovArr] = useState({})
   const [favArr, setFavArr] = useState([])
+  //const [favArrStor, setFavArrStor] = useState([])
+  const [btnAddFilm, setBtnAddFilm] = useState(false)
 
   return (
     <Router>
@@ -46,8 +48,8 @@ function App() {
               setList={setList}
               page={page}
               setPage={setPage}
-              movArr={movArr}
-              setMovArr={setMovArr}
+              //movArr={movArr}
+              //setMovArr={setMovArr}
               favArr={favArr}
               setFavArr={setFavArr}
             />
@@ -58,6 +60,14 @@ function App() {
               setFavArr={setFavArr}
               movieIdGet={movieIdGet}
               setMovieIdGet={setMovieIdGet}
+              movieId={movieId}
+              setMovieId={setMovieId}
+              //favArrStor={favArrStor}
+              //setFavArrStor={setFavArrStor}
+              movieEl={movieEl}
+              setMovieEl={setMovieEl}
+              list={list}
+              setList={setList}
             />
           </Route>
           <Route path="/SelectedMoviePage">
@@ -72,10 +82,14 @@ function App() {
               setList={setList}
               page={page}
               setPage={setPage}
-              movArr={movArr}
-              setMovArr={setMovArr}
+              //movArr={movArr}
+              //setMovArr={setMovArr}
               favArr={favArr}
               setFavArr={setFavArr}
+              //favArrStor={favArrStor}
+              //setFavArrStor={setFavArrStor}
+              btnAddFilm={btnAddFilm}
+              setBtnAddFilm={setBtnAddFilm}
             />
           </Route>
           <Route path="*">

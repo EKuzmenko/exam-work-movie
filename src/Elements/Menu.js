@@ -11,8 +11,7 @@ function Menu() {
     return (
         <div className='menu'>
             <div>
-                <img id="DeathStarImg" src={DeathStarImg} alt="DeathStarImg" />
-                <Link to="/">Movies</Link>
+                <Link to="/"><img id="DeathStarImg" src={DeathStarImg} alt="DeathStarImg" />Movies</Link>
             </div>
             <DropdownButton id="dropdown-basic-button" title="My Account">
                 <Dropdown.Item href="/">Home</Dropdown.Item>
