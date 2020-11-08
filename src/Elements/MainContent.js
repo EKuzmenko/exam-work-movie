@@ -14,10 +14,10 @@ function MainContent(props) {
         page, setPage,
         setMovieId,
         movieEl, setMovieEl,
-        //movArr, setMovArr,
         favArr, setFavArr,
         countModal, setCountModal,
-        btnDelFilm, setBtnDelFilm } = props
+        btnDelFilm, setBtnDelFilm,
+        movieIdGet, setMovieIdGet } = props
         
    useEffect(() => {
     fetch(`${api}${page}`)
@@ -25,7 +25,6 @@ function MainContent(props) {
       .then(res => {
         setList(res.results);
         setTotPages(res.total_pages);
-        //setMovArr(res)
       })
       .catch(error => console.error(error))
   }, [page])

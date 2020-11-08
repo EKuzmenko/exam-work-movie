@@ -20,7 +20,6 @@ function SelectedMovieContent(props) {
     movieEl, setMovieEl,
     list, setList,
     favArr, setFavArr,
-    //favArrStor, setFavArrStor,
     btnAddFilm, setBtnAddFilm,
     btnBack, setBtnBack,
     countModal, setCountModal,
@@ -31,7 +30,7 @@ function SelectedMovieContent(props) {
     setMovieEl(number);
     setMovieId(list[number].id);
   }
-  
+
   /* useEffect(() => {
     if (favArr.map(el => el.id != movieIdGet.id)) {
 
@@ -43,31 +42,30 @@ function SelectedMovieContent(props) {
     }
   }, [favArr]) */
 
-  useEffect(() => {
-      if (btnAddFilm === true) {
-        favArr.push(movieIdGet);
-        setFavArr(favArr);
-        localStorage.setItem("favArray", JSON.stringify(favArr));
-        setBtnAddFilm(false)
-        }
-  }, [favArr, btnAddFilm])
+  /* useEffect(() => {
+    if (btnAddFilm === true) {
+      favArr.push(list[movieEl]);
+      setFavArr(favArr);
+      localStorage.setItem("favArray", JSON.stringify(favArr));
+      setBtnAddFilm(false)
+    }
+  }, [favArr, btnAddFilm]) */
 
   useEffect(() => {
     if (btnDelFilm === true) {
-      favArr.pop(movieIdGet);
+      favArr.pop(list[movieEl]);
       setFavArr(favArr);
       localStorage.setItem("favArray", JSON.stringify(favArr));
       setBtnDelFilm(false)
-      }
-}, [favArr, btnDelFilm])
+    }
+  }, [favArr, btnDelFilm, movieEl, list])
 
+  useEffect(() => {
+    favArr.map(el => (el.id == movieId) ? setCountModal(countModal + 1) : "")
+  }, [movieId]
+  )
 
-useEffect(()=>{
-  favArr.map(el=>(el.id==movieId)?setCountModal(countModal + 1):"")
-    },[movieId]
-)
-
-useEffect(() => {
+  useEffect(() => {
     if (JSON.parse(localStorage.getItem("favArray")) === null) {
       localStorage.setItem("favArray", JSON.stringify([]));
     }
@@ -76,7 +74,7 @@ useEffect(() => {
     }
   }, [favArr.length]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     fetch(`${api_movie}${movieId}?api_key=ebea8cfca72fdff8d2624ad7bbf78e4c&language=en-US`)
       .then(res => res.json())
       .then(res => {
@@ -84,23 +82,25 @@ useEffect(() => {
         //;console.log(list[movieEl].id)
       })
       .catch(error => console.error(error))
-  }, [movieId])
+  }, [movieId]) */
 
+  /* useEffect(() => {
+    setMovieIdGet(list[movieEl])
+  }, [movieEl, list]) */
 
-  if (movieIdGet?.original_title) {
+  if (list[movieEl]?.title) {
     return (
       <div className="modalWindow container" id="modal_container"
-        style={{ backgroundImage: `url(http://image.tmdb.org/t/p/w200/${movieIdGet?.poster_path})` }}>
+        style={{ backgroundImage: `url(http://image.tmdb.org/t/p/w200/${list[movieEl]?.poster_path})` }}>
         <div className="blur">
           <div className="top_buttons col">
-            {/* {if (btnBack=false){} :to="/MyFavoritePage"} */}
             <Link to={(btnBack == true) ? "/MyFavoritePage" : "/"}
-              onClick={() => `https://api.themoviedb.org/3/movie/${movieIdGet?.id}?api_key=ebea8cfca72fdff8d2624ad7bbf78e4c&language=en-US`}>
+              onClick={() => `https://api.themoviedb.org/3/movie/${list[movieEl]?.id}?api_key=ebea8cfca72fdff8d2624ad7bbf78e4c&language=en-US`}>
               <button><img className="icon_arow_left" src={icon_arow_left} alt="icon_arow_left" />
                   Back to list
                 </button>
             </Link>
-            <button id="next_movie_btn" disabled={movieEl === (list.length - 1)} onClick={() => { Next_movie_btn_func(movieEl + 1); setCountModal(0)}
+            <button id="next_movie_btn" disabled={movieEl === (list.length - 1)} onClick={() => { Next_movie_btn_func(movieEl + 1); setCountModal(0) }
             }
             >Next Movie
               <img disabled={movieEl > (list.length - 2)} alt="icon_arow_right" className="icon_arow_right"
@@ -111,8 +111,8 @@ useEffect(() => {
             <div className="center_left">
               <div className="div_selected_poster">
                 <img className="selected_poster" alt="selected_poster"
-                  src={`http://image.tmdb.org/t/p/w200/${movieIdGet?.poster_path}` || DeathStarImg}
-                  key={movieIdGet?.id} />
+                  src={`http://image.tmdb.org/t/p/w200/${list[movieEl]?.poster_path}` || DeathStarImg}
+                  key={list[movieEl]?.id} />
               </div>
             </div>
             <div className="center_right">
@@ -125,24 +125,24 @@ useEffect(() => {
                 </button>
               </div>
               <div className="title_year">
-                {movieIdGet?.title} ({movieIdGet?.release_date.substr(0, 4)})
+                {list[movieEl]?.title} ({list[movieEl]?.release_date.substr(0, 4)})
               </div>
               <div className="center_right_center">
                 <div className="score">
-                  Score: {movieIdGet?.vote_average}
+                  Score: {list[movieEl]?.vote_average}
                 </div>
                 <hr />
                 <div className="rating">
-                  Rating: {(movieIdGet?.adult === false) ? "R" : "PG"}
+                  Rating: {(list[movieEl]?.adult === false) ? "R" : "PG"}
                 </div>
                 <hr />
                 <div className="release_date">
-                  Release Date: {monthNames[(parseInt(movieIdGet?.release_date.substr(5, 2)) - 1)]} {movieIdGet?.release_date.substr(8, 2)}, {movieIdGet?.release_date.substr(0, 4)}
+                  Release Date: {monthNames[(parseInt(list[movieEl]?.release_date.substr(5, 2)) - 1)]} {list[movieEl]?.release_date.substr(8, 2)}, {list[movieEl]?.release_date.substr(0, 4)}
                 </div>
               </div>
               <hr id="disc_hr" />
               <div className="discription">
-                <p>{movieIdGet?.overview}</p>
+                <p>{list[movieEl]?.overview}</p>
               </div>
               <hr id="disc_hr" />
             </div>
