@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {
   Link
 } from "react-router-dom";
 import DeathStarImg from '../Img/DeathStarImg.png';
 
-const api_movie = 'https://api.themoviedb.org/3/movie/';
-
 function MyFavoriteContent(props) {
 
   let { favArr, setFavArr,
-    movieId, setMovieId,
-    movieEl, setMovieEl,
-    list, setList,
-    btnBack, setBtnBack,
-    countModal, setCountModal,
-    btnDelFilm, setBtnDelFilm
+    setMovieId,
+    setMovieEl,
+    setList,
+    setBtnBack,
+    setCountModal,
+    setBtnDelFilm,
+    btnDelFilm,
+    list,
+    movieEl
   } = props
 
   useEffect(() => {
@@ -26,6 +27,15 @@ function MyFavoriteContent(props) {
     }
     setList(favArr);
   }, [favArr.length]);
+
+  useEffect(() => {
+    if (btnDelFilm === true) {
+      favArr.pop(list[movieEl]);
+      setFavArr(favArr);
+      localStorage.setItem("favArray", JSON.stringify(favArr));
+      setBtnDelFilm(false)
+    }
+  }, [favArr, btnDelFilm])
 
   if (favArr.length > 0) {
     return (
@@ -43,10 +53,12 @@ function MyFavoriteContent(props) {
               <div className="fav_center">
                 <div className="fav_center_top">
                   <div className="fav_title">
-                    <h4>{el.title}</h4>
+                    <Link to="/SelectedMoviePage" onClick={() => { setMovieId(el.id); setMovieEl(index); setBtnBack(true) }}>
+                      <h4>{el.title}</h4>
+                    </Link>
                   </div>
-                  <div className="add_to_fav_botton">
-                    <button disabled={countModal < 1} className="del_from_fav" onClick={() => { setBtnDelFilm(true); setCountModal(0) }} >
+                  <div className="del_to_fav_botton">
+                    <button className="del_from_fav" onClick={() => { setBtnDelFilm(true); setCountModal(0) }} >
                       Unfavorite
                 </button>
                   </div>

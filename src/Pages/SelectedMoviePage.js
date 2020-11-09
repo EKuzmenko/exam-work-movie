@@ -1,20 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SelectedMovieContent from '../Elements/SelectedMovieContent'
 import Menu from '../Elements/Menu'
 
 function SelectedMoviePage(props) {
-  let { movieId, setMovieId,
-        movieIdGet, setMovieIdGet,
+  let { movieId, setMovieId, 
         movieEl, setMovieEl,
-        list, setList,
-        page, setPage,
-        //movArr, setMovArr,
+        list,
         favArr, setFavArr,
-        //favArrStor, setFavArrStor,
-        btnAddFilm, setBtnAddFilm,
-        btnBack, setBtnBack,
+        btnBack,
         countModal, setCountModal,
-        btnDelFilm, setBtnDelFilm
+        btnDelFilm, setBtnDelFilm,
+        btnAddFilm, setBtnAddFilm
       } = props
 
   return (
@@ -23,24 +19,14 @@ function SelectedMoviePage(props) {
       <SelectedMovieContent
         movieId={movieId}
         setMovieId={setMovieId}
-        movieIdGet={movieIdGet}
-        setMovieIdGet={setMovieIdGet}
         movieEl={movieEl}
         setMovieEl={setMovieEl}
         list={list}
-        setList={setList}
-        page={page}
-        setPage={setPage}
-        //movArr={movArr}
-        //setMovArr={setMovArr}
         favArr={favArr}
         setFavArr={setFavArr}
-        //favArrStor={favArrStor}
-        //setFavArrStor={setFavArrStor}
-        btnAddFilm={btnAddFilm} 
+        btnAddFilm={btnAddFilm}
         setBtnAddFilm={setBtnAddFilm}
         btnBack={btnBack}
-        setBtnBack={setBtnBack}
         countModal={countModal}
         setCountModal={setCountModal}
         btnDelFilm={btnDelFilm}

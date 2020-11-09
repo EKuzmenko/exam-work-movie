@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import DeathStarImg from '../Img/DeathStarImg.png';
 import Pagination from "react-pagination-library";
 import "react-pagination-library/build/css/index.css";
@@ -13,19 +13,21 @@ function MainContent(props) {
         totPages, setTotPages,
         page, setPage,
         setMovieId,
-        movieEl, setMovieEl,
-        favArr, setFavArr,
-        countModal, setCountModal,
-        btnDelFilm, setBtnDelFilm,
-        movieIdGet, setMovieIdGet } = props
-        
+        setMovieEl,
+        setCountModal,
+        countModal
+      } = props
+   
+  useEffect(() => {
+      setCountModal(countModal=0)
+    }, [countModal]
+  ) 
+      
    useEffect(() => {
     fetch(`${api}${page}`)
       .then(res => res.json())
-      .then(res => {
-        setList(res.results);
-        setTotPages(res.total_pages);
-      })
+      .then(res => { setList(res.results);
+                     setTotPages(res.total_pages)})
       .catch(error => console.error(error))
   }, [page])
 

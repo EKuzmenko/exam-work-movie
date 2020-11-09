@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import DeathStarImg from '../Img/DeathStarImg.png';
 import icon_arow_right from '../Img/icon_arow_right.png';
 import icon_arow_left from '../Img/icon_arow_left.png';
@@ -7,66 +7,57 @@ import {
   Link
 } from "react-router-dom";
 
-const api = 'https://api.themoviedb.org/3/movie/now_playing?api_key=ebea8cfca72fdff8d2624ad7bbf78e4c&language=en-US&page='
-const api_movie = 'https://api.themoviedb.org/3/movie/';
 const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"];
 
 function SelectedMovieContent(props) {
 
   let { movieId, setMovieId,
-    movieIdGet, setMovieIdGet,
-    page, setPage,
     movieEl, setMovieEl,
-    list, setList,
+    list,
     favArr, setFavArr,
-    btnAddFilm, setBtnAddFilm,
-    btnBack, setBtnBack,
+    btnBack,
     countModal, setCountModal,
-    btnDelFilm, setBtnDelFilm
+    btnDelFilm, setBtnDelFilm,
+    btnAddFilm, setBtnAddFilm,
   } = props
+
+  useEffect(() => {
+    for (let i = 0; i < favArr.length; i++) {
+      if (movieId === favArr[i].id) {
+        setCountModal(countModal = 1)
+      }
+    }
+  }, [movieId, favArr, countModal]
+  )
 
   function Next_movie_btn_func(number) {
     setMovieEl(number);
     setMovieId(list[number].id);
   }
 
-  /* useEffect(() => {
-    if (favArr.map(el => el.id != movieIdGet.id)) {
-
-      setCountModal(0)
-    }
-    else {
-      btnAddFilm = false
-      setCountModal(1)
-    }
-  }, [favArr]) */
-
-  /* useEffect(() => {
+  useEffect(() => {
     if (btnAddFilm === true) {
       favArr.push(list[movieEl]);
       setFavArr(favArr);
       localStorage.setItem("favArray", JSON.stringify(favArr));
       setBtnAddFilm(false)
+      setCountModal(countModal = 1)
     }
-  }, [favArr, btnAddFilm]) */
+  }, [favArr, btnAddFilm])
 
   useEffect(() => {
     if (btnDelFilm === true) {
       favArr.pop(list[movieEl]);
       setFavArr(favArr);
       localStorage.setItem("favArray", JSON.stringify(favArr));
-      setBtnDelFilm(false)
+      setBtnDelFilm(false);
+      setCountModal(countModal = 0)
     }
-  }, [favArr, btnDelFilm, movieEl, list])
+  }, [favArr, btnDelFilm,countModal])
 
   useEffect(() => {
-    favArr.map(el => (el.id == movieId) ? setCountModal(countModal + 1) : "")
-  }, [movieId]
-  )
-
-  useEffect(() => {
-    if (JSON.parse(localStorage.getItem("favArray")) === null) {
+    if (JSON.parse(localStorage.getItem("favArray")) == null) {
       localStorage.setItem("favArray", JSON.stringify([]));
     }
     if (favArr.length === 0) {
@@ -74,33 +65,19 @@ function SelectedMovieContent(props) {
     }
   }, [favArr.length]);
 
-  /* useEffect(() => {
-    fetch(`${api_movie}${movieId}?api_key=ebea8cfca72fdff8d2624ad7bbf78e4c&language=en-US`)
-      .then(res => res.json())
-      .then(res => {
-        setMovieIdGet(res)
-        //;console.log(list[movieEl].id)
-      })
-      .catch(error => console.error(error))
-  }, [movieId]) */
-
-  /* useEffect(() => {
-    setMovieIdGet(list[movieEl])
-  }, [movieEl, list]) */
-
   if (list[movieEl]?.title) {
     return (
       <div className="modalWindow container" id="modal_container"
         style={{ backgroundImage: `url(http://image.tmdb.org/t/p/w200/${list[movieEl]?.poster_path})` }}>
         <div className="blur">
           <div className="top_buttons col">
-            <Link to={(btnBack == true) ? "/MyFavoritePage" : "/"}
+            <Link to={(btnBack === true) ? "/MyFavoritePage" : "/"}
               onClick={() => `https://api.themoviedb.org/3/movie/${list[movieEl]?.id}?api_key=ebea8cfca72fdff8d2624ad7bbf78e4c&language=en-US`}>
               <button><img className="icon_arow_left" src={icon_arow_left} alt="icon_arow_left" />
                   Back to list
                 </button>
             </Link>
-            <button id="next_movie_btn" disabled={movieEl === (list.length - 1)} onClick={() => { Next_movie_btn_func(movieEl + 1); setCountModal(0) }
+            <button id="next_movie_btn" disabled={movieEl === (list.length - 1)} onClick={() => { Next_movie_btn_func(movieEl + 1); setCountModal(countModal = 0) }
             }
             >Next Movie
               <img disabled={movieEl > (list.length - 2)} alt="icon_arow_right" className="icon_arow_right"
@@ -117,10 +94,10 @@ function SelectedMovieContent(props) {
             </div>
             <div className="center_right">
               <div className="add_to_fav_botton">
-                <button disabled={countModal > 0} className="add_to_fav" onClick={() => { setBtnAddFilm(true); setCountModal(countModal + 1) }} >
+                <button disabled={countModal === 1} className="add_to_fav" onClick={() => { setBtnAddFilm(true)}} >
                   Add to favorite
                 </button>
-                <button disabled={countModal < 1} className="del_from_fav" onClick={() => { setBtnDelFilm(true); setCountModal(0) }} >
+                <button disabled={countModal === 0} className="del_from_fav" onClick={() => { setBtnDelFilm(true) }} >
                   Unfavorite
                 </button>
               </div>
