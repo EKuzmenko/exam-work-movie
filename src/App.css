@@ -143,6 +143,12 @@
   padding-bottom: 4px;
   color:rgb(177, 177, 177);
  }
+ .icon_arow_left_mini{
+  width: 30px;
+  padding-right: 10px;
+  padding-bottom: 4px;
+  color:rgb(177, 177, 177);
+ }
  .icon_arow_right {
   width: 30px;
   padding-left: 10px;
@@ -152,6 +158,85 @@
  .icon_arow_right:disabled{
   color: rgb(63, 62, 62);
  }
+ .icon_arow_right_mini {
+  width: 30px;
+  padding-left: 10px;
+  padding-bottom: 4px;
+  color: rgb(177, 177, 177);
+ }
+ .icon_arow_right_mini:disabled{
+  color: rgb(63, 62, 62);
+ }
+
+ @media screen and (max-width: 600px) {
+  .center_right_center{
+    font-size: 12px;
+  }
+  .icon_arow_left {
+      display: none;
+  }
+  .icon_arow_right {
+    display: none;
+  }
+  .btn_back_to_list {
+    display: none;
+  }
+  .next_movie_btn {
+    display: none;
+  }
+ } 
+ @media screen and (min-width: 599px) {
+  
+  .center_right_mini{
+    display: none;
+   }
+ .icon_arow_left_mini {
+    display: none;
+}
+.icon_arow_right_mini {
+  display: none;
+}
+.btn_back_to_list_mini{
+  display: none;
+}
+.next_movie_btn_mini{
+  display: none;
+}
+.add_to_fav_mini{
+  display: none;
+}
+.del_from_fav_mini{
+  display: none;
+}
+ }
+ 
+.add_to_fav_mini{
+  color: aliceblue;
+  background-color: rgba(240, 248, 255, 0);
+  border-color: rgba(251, 251, 252, 0.596)!important;
+  border-radius: 4px;
+}
+.del_from_fav_mini{
+  color: aliceblue;
+  background-color: rgba(240, 248, 255, 0);
+  border-color: rgba(251, 251, 252, 0.596)!important;
+  border-radius: 4px;
+}
+
+.add_to_fav_mini:disabled{
+  position: relative;
+  color: rgba(63, 62, 62, 0);
+  border: 0px solid rgba(63, 62, 62, 0);
+  z-index: -200;
+  
+ }
+ .del_from_fav_mini:disabled{
+  position: relative;
+  color: rgba(63, 62, 62, 0);
+  border: 0px solid rgba(63, 62, 62, 0);
+  z-index: -200;
+ }
+ 
  .selected_poster{
    width: 180px;
    box-shadow: 0 0 50px rgba(7, 7, 7, 0.5);
@@ -163,6 +248,7 @@
   align-items: flex-start;
   position: relative;
  }
+
  .add_to_fav{
   position: relative;
   background-color: transparent;
@@ -178,21 +264,6 @@
    .selected_poster{
      width: 220px;
    }
-  .add_to_fav {
-      display: none;
-  }
-  .del_from_fav{
-    display: none;
-  }
-  .score{
-    font-size: 12px;
-  }
-  .rating{
-    font-size: 12px;
-  }
-  .release_date{
-    font-size: 12px;
-  }
   .discription{
     font-size: 12px!important;
   }
@@ -221,7 +292,20 @@
   border: 1px solid rgba(63, 62, 62, 0);
   z-index: -200;
  }
-
+.fav_del_from_fav{
+  position: relative;
+  background-color: transparent;
+  border: 1px solid silver;
+  color: rgb(177, 177, 177);
+  border-radius: 5px;
+  z-index: 200;
+}
+.fav_del_from_fav:disabled{
+  position: relative;
+  color: rgba(63, 62, 62, 0);
+  border: 1px solid rgba(63, 62, 62, 0);
+  z-index: -200;
+ }
  .center_content{
    width: 85%;
    display: flex;
@@ -311,6 +395,14 @@
   align-items: flex-start;
   margin-left: 25px;
   margin-right: 25px;
+}
+@media screen and (max-width: 600px) {
+  .fav_center_top{
+    display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  }
 }
 .fav_center_buttom{
   width: 100%;

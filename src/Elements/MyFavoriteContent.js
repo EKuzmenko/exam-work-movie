@@ -58,7 +58,7 @@ function MyFavoriteContent(props) {
                     </Link>
                   </div>
                   <div className="del_to_fav_botton">
-                    <button className="del_from_fav" onClick={() => { setBtnDelFilm(true); setCountModal(0) }} >
+                    <button className="fav_del_from_fav" onClick={() => { setBtnDelFilm(true); setCountModal(0) }} >
                       Unfavorite
                 </button>
                   </div>

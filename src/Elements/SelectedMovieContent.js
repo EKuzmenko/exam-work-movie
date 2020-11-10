@@ -73,14 +73,21 @@ function SelectedMovieContent(props) {
           <div className="top_buttons col">
             <Link to={(btnBack === true) ? "/MyFavoritePage" : "/"}
               onClick={() => `https://api.themoviedb.org/3/movie/${list[movieEl]?.id}?api_key=ebea8cfca72fdff8d2624ad7bbf78e4c&language=en-US`}>
-              <button><img className="icon_arow_left" src={icon_arow_left} alt="icon_arow_left" />
+              <button className="btn_back_to_list"><img className="icon_arow_left" src={icon_arow_left} alt="icon_arow_left" />
                   Back to list
                 </button>
+                <button className="btn_back_to_list_mini"><img className="icon_arow_left_mini" src={icon_arow_left} alt="icon_arow_left" />
+                  Back
+                </button>
             </Link>
-            <button id="next_movie_btn" disabled={movieEl === (list.length - 1)} onClick={() => { Next_movie_btn_func(movieEl + 1); setCountModal(countModal = 0) }
-            }
-            >Next Movie
+            <button className="next_movie_btn" disabled={movieEl === (list.length - 1)} onClick={() => { Next_movie_btn_func(movieEl + 1); setCountModal(countModal = 0) }}
+              >Next Movie
               <img disabled={movieEl > (list.length - 2)} alt="icon_arow_right" className="icon_arow_right"
+                src={icon_arow_right} />
+            </button>
+            <button className="next_movie_btn_mini" disabled={movieEl === (list.length - 1)} onClick={() => { Next_movie_btn_func(movieEl + 1); setCountModal(countModal = 0) }}
+              >Next
+              <img disabled={movieEl > (list.length - 2)} alt="icon_arow_right" className="icon_arow_right_mini"
                 src={icon_arow_right} />
             </button>
           </div>
@@ -123,6 +130,7 @@ function SelectedMovieContent(props) {
               </div>
               <hr id="disc_hr" />
             </div>
+
           </div>
         </div>
       </div>
