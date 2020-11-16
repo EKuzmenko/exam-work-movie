@@ -3,7 +3,7 @@ import MainContent from '../Elements/MainContent'
 import Menu from '../Elements/Menu'
 
 function MainPage(props) {
-    const [totPages, setTotPages] = useState(0)
+    const [totItems, setTotItems] = useState(0)
     let { list, setList,
           page, setPage,
           setMovieId,
@@ -18,8 +18,8 @@ function MainPage(props) {
             <MainContent
                 list={list}
                 setList={setList}
-                totPages={totPages}
-                setTotPages={setTotPages}
+                totItems={totItems}
+                setTotItems={setTotItems}
                 page={page}
                 setPage={setPage}
                 setMovieId={setMovieId}

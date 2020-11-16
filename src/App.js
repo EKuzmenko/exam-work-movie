@@ -10,6 +10,7 @@ import MyFavoritePage from './Pages/MyFavoritePage'
 import SelectedMoviePage from './Pages/SelectedMoviePage'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 function App() {
   const [movieId, setMovieId] = useState(0)
   const [movieEl, setMovieEl] = useState(0)
