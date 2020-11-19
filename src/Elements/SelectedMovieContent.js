@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import DeathStarImg from '../Img/DeathStarImg.png';
+import star from '../Img/star.png';
+import star_unf from '../Img/star_unf.png';
 import icon_arow_right from '../Img/icon_arow_right.png';
 import icon_arow_left from '../Img/icon_arow_left.png';
 import {
@@ -80,15 +82,15 @@ function SelectedMovieContent(props) {
                   Back
                 </button>
             </Link>
-            <button className="next_movie_btn" disabled={movieEl === (list.length - 1)} onClick={() => { Next_movie_btn_func(movieEl + 1); setCountModal(countModal = 0) }}
+            <button className="next_movie_btn" disabled={movieEl ===(list.length-1)} 
+              onClick={() => { Next_movie_btn_func(movieEl + 1); setCountModal(countModal = 0) }}
               >Next Movie
-              <img disabled={movieEl > (list.length - 2)} alt="icon_arow_right" className="icon_arow_right"
-                src={icon_arow_right} />
+              <img alt="icon_arow_right" className="icon_arow_right" src={icon_arow_right} />
             </button>
-            <button className="next_movie_btn_mini" disabled={movieEl === (list.length - 1)} onClick={() => { Next_movie_btn_func(movieEl + 1); setCountModal(countModal = 0) }}
+            <button className="next_movie_btn_mini" disabled={movieEl ===(list.length-1)} 
+              onClick={() => { Next_movie_btn_func(movieEl + 1); setCountModal(countModal = 0) }}
               >Next
-              <img disabled={movieEl > (list.length - 2)} alt="icon_arow_right" className="icon_arow_right_mini"
-                src={icon_arow_right} />
+              <img alt="icon_arow_right" className="icon_arow_right_mini" src={icon_arow_right} />
             </button>
           </div>
           <div className="center_content">
@@ -101,10 +103,12 @@ function SelectedMovieContent(props) {
             </div>
             <div className="center_right">
               <div className="add_to_fav_botton">
-                <button disabled={countModal === 1} className="add_to_fav" onClick={() => { setBtnAddFilm(true)}} >
+                <button disabled={countModal === 1} className="add_to_fav" 
+                  onClick={() => { setBtnAddFilm(true)}} >
                   Add to favorite
                 </button>
-                <button disabled={countModal === 0} className="del_from_fav" onClick={() => { setBtnDelFilm(true) }} >
+                <button disabled={countModal === 0} className="del_from_fav" 
+                  onClick={() => { setBtnDelFilm(true) }} >
                   Unfavorite
                 </button>
               </div>
@@ -121,7 +125,43 @@ function SelectedMovieContent(props) {
                 </div>
                 <hr />
                 <div className="release_date">
-                  Release Date: {monthNames[(parseInt(list[movieEl]?.release_date.substr(5, 2)) - 1)]} {list[movieEl]?.release_date.substr(8, 2)}, {list[movieEl]?.release_date.substr(0, 4)}
+                  Release Date: {monthNames[(parseInt(list[movieEl]?.release_date.substr(5, 2)) - 1)]} 
+                  {list[movieEl]?.release_date.substr(8, 2)}, {list[movieEl]?.release_date.substr(0, 4)}
+                </div>
+              </div>
+              <hr id="disc_hr" />
+              <div className="discription">
+                <p>{list[movieEl]?.overview}</p>
+              </div>
+              <hr id="disc_hr" />
+            </div>
+
+            <div className="center_right_mini">
+              <div className="add_to_fav_botton">
+                <button disabled={countModal === 1} className="add_to_fav_mini" 
+                  onClick={() => { setBtnAddFilm(true)}} >
+                  <img id="star" src={star} alt="add_to_fav" />
+                </button>
+                <button disabled={countModal === 0} className="del_from_fav_mini" 
+                  onClick={() => { setBtnDelFilm(true) }} >
+                  <img id="star_unf" src={star_unf} alt="del_from_fav" />
+                </button>
+              </div>
+              <div className="title_year">
+                {list[movieEl]?.title} ({list[movieEl]?.release_date.substr(0, 4)})
+              </div>
+              <div className="center_right_center">
+                <div className="score">
+                  Score: {list[movieEl]?.vote_average}
+                </div>
+                <hr />
+                <div className="rating">
+                  Rating: {(list[movieEl]?.adult === false) ? "R" : "PG"}
+                </div>
+                <hr />
+                <div className="release_date">
+                  Release Date: {monthNames[(parseInt(list[movieEl]?.release_date.substr(5, 2)) - 1)]} 
+                  {list[movieEl]?.release_date.substr(8, 2)}, {list[movieEl]?.release_date.substr(0, 4)}
                 </div>
               </div>
               <hr id="disc_hr" />

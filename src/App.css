@@ -143,50 +143,35 @@
    padding-bottom: 4px;
    color: rgb(177, 177, 177);
  }
-
- .icon_arow_right:disabled {
-   color: rgb(63, 62, 62);
- }
-
- .icon_arow_right_mini {
+  .icon_arow_right_mini {
    width: 30px;
    padding-left: 10px;
    padding-bottom: 4px;
    color: rgb(177, 177, 177);
  }
 
- .icon_arow_right_mini:disabled {
-   color: rgb(63, 62, 62);
- }
-
  .add_to_fav_mini {
-   color: aliceblue;
-   background-color: rgba(240, 248, 255, 0);
-   border-color: rgba(251, 251, 252, 0.596)!important;
-   border-radius: 4px;
+  background-color: transparent;
+   border-color: rgb(251, 251, 252)!important;
+   border-radius: 10px;
+   padding:2px;
  }
 
  .add_to_fav_mini:disabled {
-   position: relative;
-   color: rgba(63, 62, 62, 0);
-   border: 0px solid rgba(63, 62, 62, 0);
-   z-index: -200;
+   display:none;
  }
 
  .del_from_fav_mini {
-   color: aliceblue;
-   background-color: rgba(240, 248, 255, 0);
-   border-color: rgba(251, 251, 252, 0.596)!important;
-   border-radius: 4px;
+   background-color: transparent;
+   border-color: rgba(0, 0, 8, 0.596)!important;
+   border-radius: 10px;
+   padding:2px;
  }
 
  .del_from_fav_mini:disabled {
-   position: relative;
-   color: rgba(63, 62, 62, 0);
-   border: 0px solid rgba(63, 62, 62, 0);
-   z-index: -200;
- }
-
+  display:none;
+}
+ 
  .selected_poster {
    width: 180px;
    box-shadow: 0 0 50px rgba(7, 7, 7, 0.5);
@@ -210,10 +195,7 @@
  }
 
  .add_to_fav:disabled {
-   position: relative;
-   color: rgba(63, 62, 62, 0);
-   border: 1px solid rgba(63, 62, 62, 0);
-   z-index: -200;
+  display: none;
  }
 
  .del_from_fav {
@@ -226,10 +208,7 @@
  }
 
  .del_from_fav:disabled {
-   position: relative;
-   color: rgba(63, 62, 62, 0);
-   border: 1px solid rgba(63, 62, 62, 0);
-   z-index: -200;
+   display: none;
  }
 
  .fav_del_from_fav {
@@ -242,10 +221,7 @@
  }
 
  .fav_del_from_fav:disabled {
-   position: relative;
-   color: rgba(63, 62, 62, 0);
-   border: 1px solid rgba(63, 62, 62, 0);
-   z-index: -200;
+  display: none;
  }
 
  .center_content {
@@ -308,10 +284,10 @@
    border-bottom: 1px solid rgba(109, 109, 109, 0.856);
  }
 
- #next_movie_btn:disabled {
-   color: rgb(63, 62, 62);
+ .next_movie_btn:disabled {
+  display: none;
  }
-
+ 
  .myFavoriteContent {
    width: 100vw;
  }
@@ -411,7 +387,7 @@
      width: 200px;
    }
    .poster:hover {
-     width: 203px!important;
+     width: 210px!important;
    }
    #img_list {
      width: 220px!important;
@@ -420,9 +396,15 @@
    .maxi {
      display: none;
    }
+   .center_right{
+    display: none;
+   }
  }
 
  @media screen and (min-width: 599px) {
+   .center_right_mini{
+    display: none;
+   }
    .mini {
      display: none;
    }
